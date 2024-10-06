@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,14 +23,16 @@ public class GreetingController {
 	@GetMapping("/home")
 	public String greetHello(HttpServletRequest request, HttpServletResponse response) {
 		//HttpServletRequest, HttpServletResponse objects can be used for every controllers request to get or modify request and response information or headers
-		return "Hello" + request.getSession().getId();
+		return "Hello";
 	}
 	
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping("/user/getUser")
 	public String getLoggedInUser(Principal principal) {
 		return principal.getName();
 	}
 	
+	//@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/admin/getUsers")
 	public List<User> getUsers() {
 		return userService.getUsers();
