@@ -18,6 +18,7 @@ public class AppConfig {
 	
 	@Bean
 	public UserDetailsService userDetailsService() {
+		//when you add security the user details are fetched from inbuilt UserDetailsService and you can customize it with customUserDetailsService that implements UserDetailsService.Users list taken from this service to authenticate 
 		User user1=(User) User.builder().username("neha").password(passwordEncoder().encode("neha")).roles("ADMIN","USER").build();
 		User user2=(User) User.builder().username("ishan").password(passwordEncoder().encode("ishan")).roles("USER").build();
 		return new InMemoryUserDetailsManager(user1,user2);

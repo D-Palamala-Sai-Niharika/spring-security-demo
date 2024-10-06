@@ -10,15 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.securitydemo.model.User;
 import com.example.securitydemo.service.UserService;
 
-@RestController("/")
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@RestController
 public class GreetingController {
 	
 	@Autowired
 	public UserService userService;
 	
 	@GetMapping("/home")
-	public String greetHello() {
-		return "Hello";
+	public String greetHello(HttpServletRequest request, HttpServletResponse response) {
+		//HttpServletRequest, HttpServletResponse objects can be used for every controllers request to get or modify request and response information or headers
+		return "Hello" + request.getSession().getId();
 	}
 	
 	@GetMapping("/user/getUser")
