@@ -1,0 +1,11 @@
+package com.example.securitydemo.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+	
+	List<User> store=new ArrayList<>();
+	
+	
+}

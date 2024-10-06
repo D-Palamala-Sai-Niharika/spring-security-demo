@@ -1,0 +1,5 @@
+package com.example.securitydemo.model;
+
+public class User {
+
+}
